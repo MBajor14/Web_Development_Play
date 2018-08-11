@@ -6,6 +6,7 @@ var app = express();
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '../client/css/style.css'));
 
 var client = new Twitter({
   consumer_key: 'nVZgI0PBS3xOIKfuXKqBgKj1q',
@@ -34,7 +35,8 @@ app.post('/', function(req, res){
   res.render('results', {state: state, movies: movies});
 })
 
-app.listen(process.env.PORT, process.env.IP, function(){
+//app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(8000, function(){
     console.log('THE SERVER IS RUNNING');
 })
 
